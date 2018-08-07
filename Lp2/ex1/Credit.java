@@ -23,13 +23,15 @@ public class Credit{
 	}
 
 	public void consumir(int creditos){
-		int total = this.creditos-creditos;
+		
 		if(creditos > this.creditos){
 			System.out.println("Não possui creditos suficientes para retirar. Todos o créditos foram retirados. Saldo zerado.");
 			this.creditos = 0;
 		}
 			
 		else{
+			int total = this.creditos-creditos;
+			this.creditos-=creditos;
 			System.out.println("Creditos retirados com sucesso.\nForam retirados: "+ creditos +" creditos.");
 		}
 	} 
