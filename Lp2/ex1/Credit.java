@@ -25,7 +25,7 @@ public class Credit{
 	public void consumir(int creditos){
 		int total = this.creditos-creditos;
 		if(creditos > this.creditos){
-			System.out.println("Não possui creditos suficientes para retirar.");
+			System.out.println("Não possui creditos suficientes para retirar. Todos o créditos foram retirados. Saldo zerado.");
 			this.creditos = 0;
 		}
 			
