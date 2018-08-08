@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Credit{
   	private int creditos;
 	
@@ -25,7 +27,7 @@ public class Credit{
 	public void consumir(int creditos){
 		
 		if(creditos > this.creditos){
-			System.out.println("Não possui creditos suficientes para retirar. Todos o créditos foram retirados. Saldo zerado.");
+			System.out.println("Não possui creditos suficientes para retirar o montante selecionado. Todos os creditos foram retirados. Saldo zerado.");
 			this.creditos = 0;
 		}
 			
@@ -37,16 +39,32 @@ public class Credit{
 	} 
 
 	public static void main(String[] args){
-		Credit s1 = new Credit(100);
-		Credit s2 = new Credit(200);	
-		Credit s3 = new Credit(300);
-		Credit s4 = new Credit(400);
-		s1.topUp(100);
-		s2.consumir(300);
-		System.out.println("Saldo de credito de s1: "+s1.getCreditos());
-		System.out.println("Saldo de credito de s2: "+s2.getCreditos());
-		System.out.println("Saldo de credito de s3: "+s3.getCreditos());
-		System.out.println("Saldo de credito de s4: "+s4.getCreditos());
-	}
+		Scanner ler = new Scanner(System.in);
+		Credit conta = new Credit(1000);		
+		int n;	
+		System.out.println("\nPor padrao, toda conta eh inicializada com 1000 creditos\n");
+	
+	do{
+		System.out.println("Opcoes:\n1-Deposita creditos\n2-Sacar creditos\n3-Acessar a quantidade de creditos\n999-Sair\n");		
+		n = ler.nextInt();
 
+		if(n == 1){
+			System.out.println("Quanto de credito gostaria de adicionar?\n");
+			n = ler.nextInt();	
+			conta.topUp(n);
+			}
+
+		else if(n == 2){
+			System.out.println("Quanto de credito gostaria de retirar?\n");
+			n = ler.nextInt();	
+			conta.consumir(n);
+			}	
+
+		else if(n == 3){
+			System.out.println("Creditos: "+ conta.getCreditos());			
+			}
+		
+		}while(n != 999);
+	System.out.println("\nSaindo do sistema de creditos....\n");
+	}
 }
